@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\asuss\\Desktop\\Projects\\Patterns\\Patterns\\Patterns\\DesignPatterns.csproj",
+      "projectUniqueName": "C:\\Users\\asuss\\Desktop\\Projects\\DesignPatterns\\Patterns\\DesignPatterns.csproj",
       "projectName": "DesignPatterns",
-      "projectPath": "C:\\Users\\asuss\\Desktop\\Projects\\Patterns\\Patterns\\Patterns\\DesignPatterns.csproj",
+      "projectPath": "C:\\Users\\asuss\\Desktop\\Projects\\DesignPatterns\\Patterns\\DesignPatterns.csproj",
       "packagesPath": "C:\\Users\\asuss\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\asuss\\Desktop\\Projects\\Patterns\\Patterns\\Patterns\\obj\\",
+      "outputPath": "C:\\Users\\asuss\\Desktop\\Projects\\DesignPatterns\\Patterns\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\asuss\\AppData\\Roaming\\NuGet\\NuGet.Config",

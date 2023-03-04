@@ -1,80 +1,89 @@
-﻿//using RefactoringGuru.DesignPatterns.State.Conceptual;
-//using System;
+﻿namespace DesignPatterns.Patterns.SubClass
+{
+    class DraftState : State
+    {
+        public override void Canceled()
+        {
+            Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"Not allow!");
+        }
 
-//namespace DesignPatterns.Patterns.SubClass
-//{
-//    class DraftState : State
-//    {
-//        public override void CancelOrder()
-//        {
-//            throw new NotImplementedException();
-//        }
+        public override void Confirm()
+        {
+            this._context.ChangeState(new ConfirmedState());
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Order confirmed!");
+        }
 
-//        public override void CreateOrder()
-//        {
-//            throw new NotImplementedException();
-//        }
+        public override void Delivery()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
+    }
 
-//        public override void DeliveryOrder()
-//        {
-//            throw new NotImplementedException();
-//        }
+    class ConfirmedState : State
+    {
+        public override void Canceled()
+        {
+            this._context.ChangeState(new CanceledState());
 
-//        public override void Handle1()
-//        {
-//            Console.WriteLine("ConcreteStateA handles request1.");
-//            Console.WriteLine("ConcreteStateA wants to change the state of the context.");
-//            this._context.TransitionTo(new ConcreteStateB());
-//        }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Order canceled!");
+        }
 
-//        public override void Handle2()
-//        {
-//            Console.WriteLine("ConcreteStateA handles request2.");
-//        }
-//    }
+        public override void Confirm()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
 
-//    class NewState : State
-//    {
-//        public override void Handle1()
-//        {
-//            Console.Write("ConcreteStateB handles request1.");
-//        }
+        public override void Delivery()
+        {
+            this._context.ChangeState(new DeliveredState());
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"Order delivered!");
+        }
+    }
 
-//        public override void Handle2()
-//        {
-//            Console.WriteLine("ConcreteStateB handles request2.");
-//            Console.WriteLine("ConcreteStateB wants to change the state of the context.");
-//            this._context.TransitionTo(new ConcreteStateA());
-//        }
-//    }
+    class CanceledState : State
+    {
+        public override void Canceled()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
 
-//    class DeliveredState : State
-//    {
-//        public override void Handle1()
-//        {
-//            Console.Write("ConcreteStateB handles request1.");
-//        }
+        public override void Confirm()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
 
-//        public override void Handle2()
-//        {
-//            Console.WriteLine("ConcreteStateB handles request2.");
-//            Console.WriteLine("ConcreteStateB wants to change the state of the context.");
-//            this._context.TransitionTo(new ConcreteStateA());
-//        }
-//    }
+        public override void Delivery()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
+    }
 
-//    class CancelledState : State
-//    {
-//        public override void Handle1()
-//        {
-//            Console.Write("ConcreteStateB handles request1.");
-//        }
+    class DeliveredState : State
+    {
+        public override void Canceled()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
 
-//        public override void Handle2()
-//        {
-//            Console.WriteLine("ConcreteStateB handles request2.");
-//            Console.WriteLine("ConcreteStateB wants to change the state of the context.");
-//            this._context.TransitionTo(new ConcreteStateA());
-//        }
-//    }
-//}
+        public override void Confirm()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
+
+        public override void Delivery()
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"Not allow!");
+        }
+    }
+}

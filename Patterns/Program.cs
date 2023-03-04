@@ -58,15 +58,22 @@ class Program
 
 
         //test
-        var context = new Context(new ConcreteStateA());
-        context.Request1();
-        context.Request2();
+        var context = new Order(new DraftState());
+        context.ConfirmOrder();
+        context.GetState();
+
+        context.DeliveryOrder();
+        context.GetState();
+
+        context.CancelOrder();
+        context.GetState();
+
     }
 
     static void Main(string[] args)
     {
-        RunFactoryMethod();
+        //RunFactoryMethod();
         //RunDecorator();
-        //RunState();
+        RunState();
     }
 }

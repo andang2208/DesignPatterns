@@ -1,31 +1,40 @@
-﻿//using System;
+﻿using System;
 
-//namespace DesignPatterns.Patterns.SubClass
-//{
-//    class Order
-//    {
-//        private State _state = null;
+namespace DesignPatterns.Patterns.SubClass
+{
+    class Order
+    {
+        private State _state = null;
 
-//        public Order(State state)
-//        {
-//            this.TransitionTo(state);
-//        }
+        public Order(State state)
+        {
+            this.ChangeState(state);
+        }
 
-//        public void TransitionTo(State state)
-//        {
-//            Console.WriteLine($"Context: Transition to {state.GetType().Name}.");
-//            this._state = state;
-//            this._state.SetContext(this);
-//        }
+        public void ChangeState(State state)
+        {
+            this._state = state;
+            this._state.SetContext(this);
+        }
 
-//        public void Request1()
-//        {
-//            this._state.Handle1();
-//        }
+        public void ConfirmOrder()
+        {
+            this._state.Confirm();
+        }
 
-//        public void Request2()
-//        {
-//            this._state.Handle2();
-//        }
-//    }
-//}
+        public void CancelOrder()
+        {
+            this._state.Canceled();
+        }
+
+        public void DeliveryOrder()
+        {
+            this._state.Delivery();
+        }
+
+        public void GetState()
+        {
+            Console.WriteLine($"Current state: {_state.GetType().Name}.");
+        }
+    }
+}
