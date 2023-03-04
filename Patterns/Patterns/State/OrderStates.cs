@@ -1,17 +1,19 @@
-﻿namespace DesignPatterns.Patterns.SubClass
+﻿namespace DesignPatterns.Patterns.State
 {
     class DraftState : State
     {
         public override void Canceled()
         {
-            Console.ForegroundColor = ConsoleColor.Red; Console.WriteLine($"Not allow!");
+            Console.ForegroundColor = ConsoleColor.Red; 
+            Console.WriteLine($"Not allow!");
         }
 
         public override void Confirm()
         {
-            this._context.ChangeState(new ConfirmedState());
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Order confirmed!");
+
+            this._order.ChangeState(new ConfirmedState());
         }
 
         public override void Delivery()
@@ -25,10 +27,10 @@
     {
         public override void Canceled()
         {
-            this._context.ChangeState(new CanceledState());
-
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Order canceled!");
+
+            this._order.ChangeState(new CanceledState());
         }
 
         public override void Confirm()
@@ -39,9 +41,10 @@
 
         public override void Delivery()
         {
-            this._context.ChangeState(new DeliveredState());
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine($"Order delivered!");
+
+            this._order.ChangeState(new DeliveredState());
         }
     }
 

@@ -1,6 +1,6 @@
 ﻿using DesignPatterns.Patterns.Decorator;
 using DesignPatterns.Patterns.FactoryMethod;
-using DesignPatterns.Patterns.SubClass;
+using DesignPatterns.Patterns.State;
 using DesignPatterns.Patterns.Transportation;
 
 class Program
@@ -49,24 +49,20 @@ class Program
 
     static void RunState()
     {
-        // The client code.
-        //var context = new Order(new ConcreteStateA());
-        //context.Request1();
-        //context.Request2();
+        var order = new Order(new DraftState());
+        order.GetCurrentState();
+        Console.WriteLine("");
 
+        order.ConfirmOrder();
+        order.GetCurrentState();
+        Console.WriteLine("");
 
+        order.DeliveryOrder();
+        order.GetCurrentState();
+        Console.WriteLine("");
 
-
-        //test
-        var context = new Order(new DraftState());
-        context.ConfirmOrder();
-        context.GetState();
-
-        context.DeliveryOrder();
-        context.GetState();
-
-        context.CancelOrder();
-        context.GetState();
+        order.CancelOrder();
+        order.GetCurrentState();
 
     }
 
